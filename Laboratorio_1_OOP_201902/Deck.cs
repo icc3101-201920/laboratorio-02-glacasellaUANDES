@@ -12,7 +12,14 @@ namespace Laboratorio_1_OOP_201902
 
         public Deck()
         {
+            this.combatCards = new List<CombatCard>();
+            this.SpecialCards = new List<SpecialCard>();
+        }
 
+        public Deck(List<CombatCard> combatCards, List<SpecialCard> specialCards)
+        {
+            this.combatCards = combatCards;
+            this.SpecialCards = specialCards;
         }
 
         public List<CombatCard> CombatCards { get => combatCards; set => combatCards = value; }
