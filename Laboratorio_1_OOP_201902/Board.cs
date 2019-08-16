@@ -190,6 +190,9 @@ namespace Laboratorio_1_OOP_201902
             return;
         }
 
+        // Como se pedia dejar el playerId y el buffType como parametros opcionales,
+        // escribi varios metodos AddSpecialCard que se llaman entre si, como si
+        // concatenara constructores
         public void AddSpecialCard(SpecialCard specialCard)
         {
             AddSpecialCard(specialCard, DEFAULT_PLAYER_ID);
