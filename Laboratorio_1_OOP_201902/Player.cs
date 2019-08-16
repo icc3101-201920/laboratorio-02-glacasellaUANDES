@@ -7,14 +7,14 @@ namespace Laboratorio_1_OOP_201902
 {
     public class Player
     {
-        //Constantes
+        //Constantes de la clase
         private const int LIFE_POINTS = 2;
         private const int START_ATTACK_POINTS = 0;
 
         //Static: Esto se verá mas adelante. Básicamente, es un id que permite identificar al jugador.
         private static int idCounter;
 
-        //Atributos
+        //Atributos de la clase
         private int id;
         private int lifePoints;
         private int attackPoints;
@@ -23,7 +23,7 @@ namespace Laboratorio_1_OOP_201902
         private Board board;
         private SpecialCard captain;
 
-        //Constructor
+        //Constructor de la clase
         public Player()
         {
             LifePoints = LIFE_POINTS;
@@ -46,6 +46,7 @@ namespace Laboratorio_1_OOP_201902
                 this.lifePoints = value;
             }
         }
+
         public int AttackPoints
         {
             get
@@ -57,6 +58,7 @@ namespace Laboratorio_1_OOP_201902
                 this.attackPoints = value;
             }
         }
+
         public Deck Deck
         {
             get
@@ -68,6 +70,7 @@ namespace Laboratorio_1_OOP_201902
                 this.deck = value;
             }
         }
+
         public Hand Hand
         {
             get
@@ -90,6 +93,7 @@ namespace Laboratorio_1_OOP_201902
                 this.board = value;
             }
         }
+
         public SpecialCard Captain
         {
             get
@@ -107,21 +111,26 @@ namespace Laboratorio_1_OOP_201902
         {
             throw new NotImplementedException();
         }
+
         public void PlayCard(int cardId)
         {
             throw new NotImplementedException();
         }
+
         public void ChangeCard(int cardId)
         {
             throw new NotImplementedException();
         }
+
         public void FirstHand()
         {
             throw new NotImplementedException();
         }
+
         public void ChooseCaptainCard(SpecialCard captainCard)
         {
             this.captain = captainCard;
+            return;
         }
 
         
