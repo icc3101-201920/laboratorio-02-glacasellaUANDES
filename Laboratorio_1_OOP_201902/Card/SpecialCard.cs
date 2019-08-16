@@ -6,8 +6,6 @@ namespace Laboratorio_1_OOP_201902.Card
 {
     public class SpecialCard : Card
     {
-        // Valores por default de la clase
-        private const string DEFAULT_BUFFTYPE = "none";
 
         //Atributos de la clase
         private string buffType;

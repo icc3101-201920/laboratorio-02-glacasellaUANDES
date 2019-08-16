@@ -7,6 +7,10 @@ namespace Laboratorio_1_OOP_201902
 {
     public class Board
     {
+        // Valores DEFAULT
+        private const int DEFAULT_PLAYER_ID = 1;
+        private const string DEFAULT_SPECIALCARDS_BUFFTYPE = null;
+
         //Constantes
         private const int DEFAULT_NUMBER_OF_PLAYERS = 2;
 
@@ -155,19 +159,172 @@ namespace Laboratorio_1_OOP_201902
         {
             throw new NotImplementedException();
         }
+
+
+
+
+
+
+
+
+
+        // METODOS ESCRITOS POR MI (LO QUE SE PIDE EN EL LAB)
+
+        public void AddCombatCard(int playerId, CombatCard combatCard)
+        {
+            // Primero, obtenemos el tipo de la carta
+            string type = combatCard.Type;
+            // Dependiendo del tipo, la agregamos a la lista de cartas del jugador correspondiente
+            if (type == "melee")
+            {
+                this.meleeCards[playerId].Add(combatCard);
+            }
+            else if (type == "rangeCards")
+            {
+                this.rangeCards[playerId].Add(combatCard);
+            }
+            else
+            {
+                this.longRangeCards[playerId].Add(combatCard);
+            }
+            return;
+        }
+
+        public void AddSpecialCard(SpecialCard specialCard)
+        {
+            AddSpecialCard(specialCard, DEFAULT_PLAYER_ID);
+            return;
+        }
+
+        public void AddSpecialCard(SpecialCard specialCard, int playerId)
+        {
+            AddSpecialCard(specialCard, playerId, DEFAULT_SPECIALCARDS_BUFFTYPE);
+            return;
+        }
+
+        public void AddSpecialCard(SpecialCard specialCard, int playerId, string buffType)
+        {
+            // Primero, obtenemos el tipo de la carta
+            string type = specialCard.Type;
+
+            // Dependiendo del tipo, la agregamos a la lista de cartas del jugador correspondiente
+            // Unicamente agregamos la carta si vemos que la posicion donde deberia estar la carta del 
+            // jugador correspondiente esta vacia. Sino, tiramos un error.
+            if (type == "specialMelee")
+            {
+                if (specialMeleeCards[playerId] == null)
+                {
+                    specialMeleeCards[playerId] = specialCard;
+                }
+                else
+                {
+                    throw new System.InvalidOperationException("El jugador ya tiene una specialMeleeCard");
+                }
+            }
+            else if (type == "specialRange")
+            {
+                if (specialRangeCards[playerId] == null)
+                {
+                    specialRangeCards[playerId] = specialCard;
+                }
+                else
+                {
+                    throw new System.InvalidOperationException("El jugador ya tiene una specialRangeCard");
+                }
+            }
+            else
+            {
+                if (specialLongRangeCards[playerId] == null)
+                {
+                    specialLongRangeCards[playerId] = specialCard;
+                }
+                else
+                {
+                    throw new System.InvalidOperationException("El jugador ya tiene una specialLongRangeCard");
+                }
+            }
+        }
+
+        public void DestroyCombatCard(int playerId)
+        {
+            // Usamos Clear para limpiar todas las listas del jugador
+            this.meleeCards[playerId].Clear();
+            this.rangeCards[playerId].Clear();
+            this.longRangeCards[playerId].Clear();
+            return;
+        }
+
+        public void DestroySpecialCard(int playerId)
+        {
+            // Para destruir, entiendo que se debe poner el valor dentro del array en null
+            // no haria falta hacerle resize al mismo
+            this.specialMeleeCards[playerId] = null;
+            this.specialRangeCards[playerId] = null;
+            this.specialLongRangeCards[playerId] = null;
+            return;
+        }
+
         public int[] GetMeleeAttackPoints()
         {
-            throw new NotImplementedException();
+            // Definimos contadores para los puntos de ataque de ambos jugadores
+            int contadorJ0 = 0;
+            int contadorJ1 = 0;
+
+            // Recorremos las cartas de cada jugador y vamos sumando los puntos de ataque
+            for (int i = 0; i < meleeCards[0].Count; i++)
+            {
+                contadorJ0 += meleeCards[0][i].AttackPoints;
+            }
+
+            for (int i = 0; i < meleeCards[1].Count; i++)
+            {
+                contadorJ1 += meleeCards[1][i].AttackPoints;
+            }
+
+            int[] result = new int[2] { contadorJ0, contadorJ1 };
+            return result;
         }
 
         public int[] GetRangeAttackPoints()
         {
-            throw new NotImplementedException();
+            // Definimos contadores para los puntos de ataque de ambos jugadores
+            int contadorJ0 = 0;
+            int contadorJ1 = 0;
+
+            // Recorremos las cartas de cada jugador y vamos sumando los puntos de ataque
+            for (int i = 0; i < rangeCards[0].Count; i++)
+            {
+                contadorJ0 += rangeCards[0][i].AttackPoints;
+            }
+
+            for (int i = 0; i < rangeCards[1].Count; i++)
+            {
+                contadorJ1 += rangeCards[1][i].AttackPoints;
+            }
+
+            int[] result = new int[2] { contadorJ0, contadorJ1 };
+            return result;
         }
 
         public int[] GetLongRangeAttackPoints()
         {
-            throw new NotImplementedException();
+            // Definimos contadores para los puntos de ataque de ambos jugadores
+            int contadorJ0 = 0;
+            int contadorJ1 = 0;
+
+            // Recorremos las cartas de cada jugador y vamos sumando los puntos de ataque
+            for (int i = 0; i < longRangeCards[0].Count; i++)
+            {
+                contadorJ0 += longRangeCards[0][i].AttackPoints;
+            }
+
+            for (int i = 0; i < longRangeCards[1].Count; i++)
+            {
+                contadorJ1 += longRangeCards[1][i].AttackPoints;
+            }
+
+            int[] result = new int[2] { contadorJ0, contadorJ1 };
+            return result;
         }
 
     }
