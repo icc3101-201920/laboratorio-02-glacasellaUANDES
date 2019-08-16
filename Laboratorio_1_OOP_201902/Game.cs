@@ -60,18 +60,47 @@ namespace Laboratorio_1_OOP_201902
             }
         }
 
-        //Metodos
-        public bool CheckIfEndGame()
-        {
-            throw new NotImplementedException();
-        }
-        public bool GetWinner()
-        {
-            throw new NotImplementedException();
-        }
         public void Play()
         {
             throw new NotImplementedException();
         }
+
+
+
+
+
+        // Metodos escritos por mi (lo que se pide en el lab)
+        public bool CheckIfEndGame()
+        {
+            if (players[0].LifePoints == 0 || players[1].LifePoints == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public int GetWinner()
+        {
+            if (this.CheckIfEndGame() == false)
+            {
+                throw new System.InvalidOperationException("Aun no hay un ganador");
+            }
+            else
+            {
+                if (players[0].LifePoints == 0)
+                {
+                    return this.players[1].Id;
+                }
+                else
+                {
+                    return this.players[0].Id;
+                }
+            }
+        }
+        
     }
 }
