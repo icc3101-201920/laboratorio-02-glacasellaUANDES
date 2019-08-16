@@ -7,6 +7,7 @@ namespace Laboratorio_1_OOP_201902
 {
     public class Hand : Deck
     {
+        public Hand() : base() { }
         public Hand(List<CombatCard> combatCards, List<SpecialCard> specialCards) : base(combatCards, specialCards)
         {}
     }

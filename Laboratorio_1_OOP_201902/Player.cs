@@ -121,7 +121,9 @@ namespace Laboratorio_1_OOP_201902
         }
         public void ChooseCaptainCard(SpecialCard captainCard)
         {
-            throw new NotImplementedException();
+            this.captain = captainCard;
         }
+
+        
     }
 }

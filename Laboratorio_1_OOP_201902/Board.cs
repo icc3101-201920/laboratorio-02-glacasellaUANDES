@@ -93,6 +93,7 @@ namespace Laboratorio_1_OOP_201902
         }
 
 
+
         //Constructor
         public Board()
         {
@@ -158,13 +159,16 @@ namespace Laboratorio_1_OOP_201902
         {
             throw new NotImplementedException();
         }
+
         public int[] GetRangeAttackPoints()
         {
             throw new NotImplementedException();
         }
+
         public int[] GetLongRangeAttackPoints()
         {
             throw new NotImplementedException();
         }
+
     }
 }
